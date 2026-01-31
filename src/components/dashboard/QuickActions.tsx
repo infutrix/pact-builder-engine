@@ -35,20 +35,20 @@ const actions = [
 export function QuickActions() {
   return (
     <div className="rounded-xl border border-border bg-card p-6 shadow-card animate-slide-up">
-      <h3 className="text-lg font-semibold text-card-foreground mb-4">Quick Actions</h3>
+      <h3 className="text-lg font-semibold text-card-foreground mb-4 tracking-tight">Quick Actions</h3>
       
       <div className="grid grid-cols-2 gap-3">
         {actions.map((action) => (
           <Button
             key={action.label}
             variant={action.variant}
-            className={`h-auto flex-col items-start gap-1 p-4 ${action.className}`}
+            className={`h-auto flex-col items-start gap-2 p-4 transition-all duration-200 hover:-translate-y-0.5 ${action.className}`}
           >
             <div className="flex items-center gap-2">
               <action.icon className="h-4 w-4" />
-              <span className="font-medium">{action.label}</span>
+              <span className="font-medium text-sm">{action.label}</span>
             </div>
-            <span className="text-xs opacity-80">{action.description}</span>
+            <span className="text-xs opacity-75 text-left">{action.description}</span>
           </Button>
         ))}
       </div>

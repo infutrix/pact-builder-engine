@@ -73,18 +73,18 @@ export default function Approvals() {
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Approval Workflow</h1>
+          <h1 className="text-2xl font-bold text-foreground tracking-tight">Approval Workflow</h1>
           <p className="text-muted-foreground">
             Track and manage timesheet approvals through the workflow stages.
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <Badge variant="outline" className="border-warning text-warning">
-            <Clock className="mr-1 h-3 w-3" />
+          <Badge variant="outline" className="border-warning text-warning px-3 py-1">
+            <Clock className="mr-1.5 h-3 w-3" />
             12 Pending
           </Badge>
-          <Badge variant="outline" className="border-success text-success">
-            <CheckCircle className="mr-1 h-3 w-3" />
+          <Badge variant="outline" className="border-success text-success px-3 py-1">
+            <CheckCircle className="mr-1.5 h-3 w-3" />
             45 Approved
           </Badge>
         </div>
@@ -105,7 +105,7 @@ export default function Approvals() {
               <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center gap-4">
                   <Avatar className="h-12 w-12">
-                    <AvatarFallback className="bg-primary text-primary-foreground">
+                    <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
                       {approval.employee.split(" ").map((n) => n[0]).join("")}
                     </AvatarFallback>
                   </Avatar>
@@ -117,7 +117,7 @@ export default function Approvals() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-lg font-bold text-card-foreground">
+                  <p className="text-xl font-bold text-card-foreground">
                     ${approval.amount.toLocaleString()}
                   </p>
                   <p className="text-sm text-muted-foreground">{approval.hours}h total</p>
@@ -125,15 +125,15 @@ export default function Approvals() {
               </div>
 
               {/* Workflow Stages */}
-              <div className="flex items-center gap-2 mb-6">
+              <div className="flex items-center gap-2 mb-6 overflow-x-auto pb-2">
                 {approval.stages.map((stage, index) => (
-                  <div key={stage.name} className="flex items-center">
+                  <div key={stage.name} className="flex items-center shrink-0">
                     <div
-                      className={`flex items-center gap-2 rounded-lg px-3 py-2 ${
+                      className={`flex items-center gap-2 rounded-xl px-4 py-2.5 transition-all ${
                         stage.status === "complete"
                           ? "bg-success/10 text-success"
                           : stage.status === "current"
-                          ? "bg-accent/10 text-accent border border-accent/30"
+                          ? "bg-accent/10 text-accent border border-accent/30 shadow-sm"
                           : "bg-muted text-muted-foreground"
                       }`}
                     >
@@ -147,12 +147,12 @@ export default function Approvals() {
                       <div className="text-sm">
                         <p className="font-medium">{stage.name}</p>
                         {stage.approver && (
-                          <p className="text-xs opacity-80">{stage.approver}</p>
+                          <p className="text-xs opacity-75">{stage.approver}</p>
                         )}
                       </div>
                     </div>
                     {index < approval.stages.length - 1 && (
-                      <ChevronRight className="h-5 w-5 text-muted-foreground mx-1" />
+                      <ChevronRight className="h-5 w-5 text-muted-foreground mx-1.5" />
                     )}
                   </div>
                 ))}
@@ -166,18 +166,18 @@ export default function Approvals() {
                 {!isComplete && currentStage && (
                   <div className="flex items-center gap-2">
                     <Button variant="outline" size="sm" className="border-destructive text-destructive hover:bg-destructive/10">
-                      <X className="mr-1 h-4 w-4" />
+                      <X className="mr-1.5 h-4 w-4" />
                       Reject
                     </Button>
-                    <Button size="sm" className="gradient-accent text-accent-foreground">
-                      <Check className="mr-1 h-4 w-4" />
+                    <Button size="sm" className="gradient-accent text-accent-foreground shadow-sm">
+                      <Check className="mr-1.5 h-4 w-4" />
                       Approve
                     </Button>
                   </div>
                 )}
                 {isComplete && (
-                  <Badge className="bg-success text-success-foreground">
-                    <CheckCircle className="mr-1 h-3 w-3" />
+                  <Badge className="bg-success text-success-foreground px-3 py-1">
+                    <CheckCircle className="mr-1.5 h-3 w-3" />
                     Fully Approved
                   </Badge>
                 )}

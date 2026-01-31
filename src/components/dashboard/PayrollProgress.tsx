@@ -15,43 +15,44 @@ export function PayrollProgress() {
     <div className="rounded-xl border border-border bg-card p-6 shadow-card animate-slide-up">
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-lg font-semibold text-card-foreground">Payroll Cycle Progress</h3>
-          <span className="text-2xl font-bold text-accent">{totalProgress}%</span>
+          <h3 className="text-lg font-semibold text-card-foreground tracking-tight">Payroll Cycle Progress</h3>
+          <div className="flex items-center gap-2">
+            <span className="text-3xl font-bold text-accent">{totalProgress}%</span>
+          </div>
         </div>
         <p className="text-sm text-muted-foreground">Week of Jan 20-26, 2026</p>
       </div>
       
-      <div className="relative mb-6">
+      <div className="relative mb-8">
         <Progress value={totalProgress} className="h-3" />
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse-soft pointer-events-none rounded-full" />
       </div>
       
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-4 gap-6">
         {stages.map((stage, index) => {
           const percentage = Math.round((stage.count / stage.total) * 100);
           const isComplete = stage.count === stage.total;
           const hasIssues = percentage < 80 && !isComplete;
           
           return (
-            <div key={stage.label} className="text-center">
-              <div className="flex justify-center mb-2">
+            <div key={stage.label} className="text-center group">
+              <div className="flex justify-center mb-3">
                 {isComplete ? (
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-success/10">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-success/10 transition-transform group-hover:scale-110">
                     <CheckCircle2 className="h-5 w-5 text-success" />
                   </div>
                 ) : hasIssues ? (
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-warning/10">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-warning/10 transition-transform group-hover:scale-110">
                     <AlertTriangle className="h-5 w-5 text-warning" />
                   </div>
                 ) : (
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 transition-transform group-hover:scale-110">
                     <Clock className="h-5 w-5 text-accent" />
                   </div>
                 )}
               </div>
-              <p className="text-sm font-medium text-card-foreground">{stage.label}</p>
-              <p className="text-xs text-muted-foreground">
-                {stage.count}/{stage.total}
+              <p className="text-sm font-semibold text-card-foreground">{stage.label}</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                {stage.count} of {stage.total}
               </p>
             </div>
           );
