@@ -39,11 +39,11 @@ export function StatCard({
   const TrendIcon = trend?.direction === "up" ? TrendingUp : trend?.direction === "down" ? TrendingDown : Minus;
 
   return (
-    <div className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:shadow-card-hover animate-fade-in">
+    <div className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-0.5 animate-fade-in">
       <div className="flex items-start justify-between">
-        <div className="space-y-2">
-          <p className="text-sm font-medium text-muted-foreground">{title}</p>
-          <p className="text-3xl font-bold text-card-foreground">{value}</p>
+        <div className="space-y-3">
+          <p className="text-sm font-medium text-muted-foreground tracking-wide">{title}</p>
+          <p className="text-3xl font-bold tracking-tight text-card-foreground">{value}</p>
           {(subtitle || trend) && (
             <div className="flex items-center gap-2">
               {trend && (
@@ -60,7 +60,7 @@ export function StatCard({
         </div>
         <div
           className={cn(
-            "flex h-12 w-12 items-center justify-center rounded-xl text-primary-foreground",
+            "flex h-12 w-12 items-center justify-center rounded-xl text-primary-foreground shadow-sm",
             iconBgClasses[variant]
           )}
         >
@@ -69,7 +69,7 @@ export function StatCard({
       </div>
       
       {/* Decorative gradient */}
-      <div className="absolute -bottom-8 -right-8 h-24 w-24 rounded-full bg-gradient-to-br from-accent/10 to-transparent blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="absolute -bottom-12 -right-12 h-32 w-32 rounded-full bg-gradient-to-br from-accent/5 to-transparent blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
     </div>
   );
 }

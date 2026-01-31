@@ -110,7 +110,7 @@ export default function ValidationQueue() {
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Validation Queue</h1>
+          <h1 className="text-2xl font-bold text-foreground tracking-tight">Validation Queue</h1>
           <p className="text-muted-foreground">
             Review and validate extracted timesheet data before approval.
           </p>
@@ -133,8 +133,8 @@ export default function ValidationQueue() {
 
       {/* Bulk Actions */}
       {selected.length > 0 && (
-        <div className="flex items-center gap-4 rounded-lg bg-accent/10 border border-accent/20 p-4 animate-scale-in">
-          <span className="font-medium text-accent">{selected.length} selected</span>
+        <div className="flex items-center gap-4 rounded-xl bg-accent/10 border border-accent/20 p-4 animate-scale-in">
+          <span className="font-semibold text-accent">{selected.length} selected</span>
           <div className="flex-1" />
           <Button variant="outline" size="sm" className="border-success text-success hover:bg-success/10">
             <CheckCircle className="mr-2 h-4 w-4" />
@@ -151,7 +151,7 @@ export default function ValidationQueue() {
       <div className="rounded-xl border border-border bg-card shadow-card overflow-hidden">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-border bg-muted/50">
+            <tr className="border-b border-border bg-muted/30">
               <th className="p-4 text-left">
                 <Checkbox
                   checked={selected.length === items.length}
@@ -172,7 +172,7 @@ export default function ValidationQueue() {
             {items.map((item) => (
               <tr
                 key={item.id}
-                className={`hover:bg-muted/30 transition-colors ${
+                className={`hover:bg-muted/20 transition-colors ${
                   selected.includes(item.id) ? "bg-accent/5" : ""
                 }`}
               >
@@ -184,7 +184,7 @@ export default function ValidationQueue() {
                 </td>
                 <td className="p-4">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-secondary text-xs font-semibold">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-secondary text-xs font-semibold">
                       {item.employee.split(" ").map((n) => n[0]).join("")}
                     </div>
                     <span className="font-medium text-card-foreground">{item.employee}</span>
@@ -192,7 +192,7 @@ export default function ValidationQueue() {
                 </td>
                 <td className="p-4 text-muted-foreground">{item.client}</td>
                 <td className="p-4 text-muted-foreground">{item.period}</td>
-                <td className="p-4 font-medium text-card-foreground">{item.hours}h</td>
+                <td className="p-4 font-semibold text-card-foreground">{item.hours}h</td>
                 <td className="p-4 text-muted-foreground">${item.rate}/hr</td>
                 <td className="p-4">
                   <span className={`font-semibold ${getConfidenceColor(item.confidence)}`}>
@@ -201,7 +201,7 @@ export default function ValidationQueue() {
                 </td>
                 <td className="p-4">
                   {item.exceptions.length > 0 ? (
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1.5">
                       <AlertTriangle className="h-4 w-4 text-warning" />
                       <Badge variant="outline" className="border-warning text-warning">
                         {item.exceptions.length}
@@ -216,13 +216,13 @@ export default function ValidationQueue() {
                 </td>
                 <td className="p-4">
                   <div className="flex items-center gap-1">
-                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                    <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-accent/10">
                       <Eye className="h-4 w-4" />
                     </Button>
-                    <Button variant="ghost" size="icon" className="h-8 w-8 text-success hover:text-success">
+                    <Button variant="ghost" size="icon" className="h-8 w-8 text-success hover:text-success hover:bg-success/10">
                       <CheckCircle className="h-4 w-4" />
                     </Button>
-                    <Button variant="ghost" size="icon" className="h-8 w-8 text-destructive hover:text-destructive">
+                    <Button variant="ghost" size="icon" className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10">
                       <XCircle className="h-4 w-4" />
                     </Button>
                   </div>

@@ -9,6 +9,7 @@ import TimesheetIngestion from "./pages/TimesheetIngestion";
 import ValidationQueue from "./pages/ValidationQueue";
 import Approvals from "./pages/Approvals";
 import AIAssistant from "./pages/AIAssistant";
+import OCSIntegration from "./pages/OCSIntegration";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/validation" element={<ValidationQueue />} />
             <Route path="/approvals" element={<Approvals />} />
             <Route path="/ai-assistant" element={<AIAssistant />} />
+            <Route path="/ocs-integration" element={<OCSIntegration />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

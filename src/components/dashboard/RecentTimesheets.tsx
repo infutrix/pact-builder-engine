@@ -79,10 +79,10 @@ const statusConfig = {
 
 export function RecentTimesheets() {
   return (
-    <div className="rounded-xl border border-border bg-card shadow-card animate-slide-up">
-      <div className="flex items-center justify-between border-b border-border p-4">
+    <div className="rounded-xl border border-border bg-card shadow-card animate-slide-up overflow-hidden">
+      <div className="flex items-center justify-between border-b border-border p-5">
         <div>
-          <h3 className="text-lg font-semibold text-card-foreground">Recent Timesheets</h3>
+          <h3 className="text-lg font-semibold text-card-foreground tracking-tight">Recent Timesheets</h3>
           <p className="text-sm text-muted-foreground">Latest processed submissions</p>
         </div>
         <Button variant="outline" size="sm">
@@ -98,10 +98,10 @@ export function RecentTimesheets() {
           return (
             <div
               key={timesheet.id}
-              className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors"
+              className="flex items-center justify-between p-4 hover:bg-muted/30 transition-all duration-200"
             >
               <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-sm font-semibold text-secondary-foreground">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary text-sm font-semibold text-secondary-foreground">
                   {timesheet.employee.split(" ").map((n) => n[0]).join("")}
                 </div>
                 <div>
@@ -125,7 +125,7 @@ export function RecentTimesheets() {
                   {config.label}
                 </Badge>
                 
-                <Button variant="ghost" size="icon" className="h-8 w-8">
+                <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-accent/10">
                   <Eye className="h-4 w-4" />
                 </Button>
               </div>

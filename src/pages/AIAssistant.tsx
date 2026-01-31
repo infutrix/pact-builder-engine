@@ -84,11 +84,11 @@ export default function AIAssistant() {
       {/* Page Header */}
       <div className="mb-6">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl gradient-accent">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl gradient-accent shadow-sm">
             <Sparkles className="h-5 w-5 text-accent-foreground" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-foreground">AI Assistant</h1>
+            <h1 className="text-2xl font-bold text-foreground tracking-tight">AI Assistant</h1>
             <p className="text-muted-foreground">
               Ask questions about timesheets, payroll, and more.
             </p>
@@ -109,15 +109,15 @@ export default function AIAssistant() {
                 }`}
               >
                 {message.role === "assistant" && (
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl gradient-accent">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl gradient-accent shadow-sm">
                     <Bot className="h-5 w-5 text-accent-foreground" />
                   </div>
                 )}
                 <div
-                  className={`max-w-[70%] rounded-2xl px-4 py-3 ${
+                  className={`max-w-[70%] rounded-2xl px-5 py-3.5 ${
                     message.role === "user"
-                      ? "gradient-primary text-primary-foreground"
-                      : "bg-muted"
+                      ? "gradient-primary text-primary-foreground shadow-sm"
+                      : "bg-muted/70"
                   }`}
                 >
                   <p className="whitespace-pre-wrap text-sm leading-relaxed">
@@ -126,7 +126,7 @@ export default function AIAssistant() {
                     )}
                   </p>
                   <p
-                    className={`mt-1 text-xs ${
+                    className={`mt-2 text-xs ${
                       message.role === "user" ? "opacity-70" : "text-muted-foreground"
                     }`}
                   >
@@ -134,7 +134,7 @@ export default function AIAssistant() {
                   </p>
                 </div>
                 {message.role === "user" && (
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary shadow-sm">
                     <User className="h-5 w-5 text-primary-foreground" />
                   </div>
                 )}
@@ -144,15 +144,15 @@ export default function AIAssistant() {
         </ScrollArea>
 
         {/* Suggestions */}
-        <div className="border-t border-border p-4">
-          <p className="text-xs font-medium text-muted-foreground mb-2">Suggested questions:</p>
+        <div className="border-t border-border p-4 bg-muted/20">
+          <p className="text-xs font-medium text-muted-foreground mb-3">Suggested questions:</p>
           <div className="flex flex-wrap gap-2">
             {suggestions.map((suggestion) => (
               <Button
                 key={suggestion}
                 variant="outline"
                 size="sm"
-                className="text-xs"
+                className="text-xs hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-colors"
                 onClick={() => sendMessage(suggestion)}
               >
                 {suggestion}
@@ -168,15 +168,15 @@ export default function AIAssistant() {
               e.preventDefault();
               sendMessage(input);
             }}
-            className="flex gap-2"
+            className="flex gap-3"
           >
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about timesheets, payroll, exceptions..."
-              className="flex-1"
+              className="flex-1 bg-background/50 focus:bg-background transition-colors"
             />
-            <Button type="submit" className="gradient-accent text-accent-foreground">
+            <Button type="submit" className="gradient-accent text-accent-foreground shadow-sm px-4">
               <Send className="h-4 w-4" />
             </Button>
           </form>
