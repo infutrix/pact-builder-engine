@@ -11,14 +11,15 @@ export default function Dashboard() {
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
+          <p className="text-sm font-medium text-accent mb-1">Welcome back, John 👋</p>
           <h1 className="text-2xl font-bold text-foreground">Dashboard</h1>
-          <p className="text-muted-foreground">
-            Welcome back! Here's your timesheet processing overview.
+          <p className="text-muted-foreground mt-1">
+            Here's what's happening with your timesheets today.
           </p>
         </div>
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Clock className="h-4 w-4" />
-          <span>Last updated: 2 min ago</span>
+        <div className="flex items-center gap-2 text-xs text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-full">
+          <Clock className="h-3.5 w-3.5" />
+          <span>Updated 2 min ago</span>
         </div>
       </div>
 
