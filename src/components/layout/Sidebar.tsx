@@ -47,18 +47,18 @@ export function Sidebar() {
       {/* Logo */}
       <div className="flex h-16 items-center justify-between px-4 border-b border-sidebar-border">
         {!collapsed && (
-          <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-sidebar-primary">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-sidebar-primary to-accent shadow-lg">
               <FileSpreadsheet className="h-5 w-5 text-sidebar-primary-foreground" />
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-bold text-sidebar-foreground">K-STAS</span>
-              <span className="text-[10px] text-sidebar-muted">Smart Timesheet</span>
+              <span className="text-base font-bold text-sidebar-foreground tracking-wide">KUIPER</span>
+              <span className="text-[10px] text-sidebar-muted font-medium">Smart Timesheet System</span>
             </div>
           </div>
         )}
         {collapsed && (
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-sidebar-primary mx-auto">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-sidebar-primary to-accent shadow-lg mx-auto">
             <FileSpreadsheet className="h-5 w-5 text-sidebar-primary-foreground" />
           </div>
         )}
